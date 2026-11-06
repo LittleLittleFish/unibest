@@ -21,6 +21,7 @@
 | [sop-new-page.md](./sop-new-page.md) | 新页面/组件/分包/tabbar/hooks SOP 与验证清单 |
 | [performance.md](./performance.md) | 性能与分包：主包体积、内置优化表、包体积检查、编码侧规则 |
 | [release.md](./release.md) | 发布流程：upload:mp 全流程、changesets、uvm 升级、环境切换、合入门禁 |
+| [renderer.md](./renderer.md) | 渲染模块：three.js 版本锁、CanvasAdapter 接缝、小程序 canvas 的坑、接入三步 |
 
 ## 常用命令
 

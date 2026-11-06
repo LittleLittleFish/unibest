@@ -49,6 +49,8 @@ src/
 ├── hooks/          # 组合式函数(auto-import,免 import)
 ├── tabbar/         # 底部导航(config.ts 为唯一配置源)
 ├── static/         # 静态资源(@img 别名指向 images 子目录)
+├── mesh/           # 网格数据与算法(纯 TypedArray,不引 three)
+├── renderer/       # 3D 渲染(唯一 import three 的地方,平台差异在 adapter)
 ├── service/        # openapi 生成目录(`pnpm openapi`,eslint 忽略,勿手改)
 └── types/          # 类型声明(大部分为生成物,见第 1 节)
 ```

@@ -43,6 +43,7 @@ import { h5Api } from '@/utils/h5'
 | 自动打开开发者工具 | scripts/open-dev-tools.js | mp-weixin / mp-alipay / mp-lark 构建后自动打开对应工具;上传脚本用 `SKIP_OPEN_DEVTOOLS=true` 跳过 |
 | bundle-optimizer 分包优化 | vite.config.ts | `enable: isMpWeixin`,仅微信小程序端 |
 | 原生插件资源复制 | vite.config.ts | 仅 app 平台且 `VITE_COPY_NATIVE_RES_ENABLE=true` |
+| 3D 渲染适配层 | src/renderer/adapter/* | H5 用 DOM canvas;小程序取 canvas 节点 + WebGL1 + 模板 touch 转交,详见 [renderer.md](./renderer.md) |
 
 ## 4. 多端请求地址
 

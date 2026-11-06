@@ -3,10 +3,22 @@ import type { UserRole } from '@/api/types/login'
 import type { RemoveLeadingSlashFromUnion } from '@/typings'
 
 /**
+ * 生成的 _LocationUrl 只包含「非 tabBar 页面」,tabBar 页面在 SwitchTabOptions 里。
+ * 页面一多(出现第一个非 tabBar 页面后)_LocationUrl 就从 string 收窄成字面量联合,
+ * 不并上 tabBar 页面的话,本文件下面的 pagePath 会全部报类型错误。
+ */
+type TabBarPagePath = SwitchTabOptions extends { url: infer Url }
+  ? (Url extends string ? Url : never)
+  : never
+
+/** tabbar 可用的页面路径(去掉开头的 /) */
+export type PagePath = RemoveLeadingSlashFromUnion<_LocationUrl | TabBarPagePath>
+
+/**
  * 原生 tabbar 的单个选项配置
  */
 export type NativeTabBarItem = TabBar['list'][number] & {
-  pagePath: RemoveLeadingSlashFromUnion<_LocationUrl>
+  pagePath: PagePath
 }
 
 /** badge 显示一个数字或 小红点（样式可以直接在 tabbar/index.vue 里面修改） */
@@ -15,7 +27,7 @@ export type CustomTabBarItemBadge = number | 'dot'
 /** 自定义 tabbar 的单个选项配置 */
 export interface CustomTabBarItem {
   text: string
-  pagePath: RemoveLeadingSlashFromUnion<_LocationUrl>
+  pagePath: PagePath
   /** 图标类型，不建议用 image 模式，因为需要配置 2 张图，更麻烦 */
   iconType: 'uiLib' | 'unocss' | 'iconfont' | 'image'
   /**
